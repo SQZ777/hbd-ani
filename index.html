@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>生日記憶翻牌</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <main class="app">
+    <section id="startScreen" class="screen active">
+      <div class="hero-card">
+        <div class="badge">Birthday Memory Game</div>
+        <h1 id="gameTitle">生日記憶翻牌</h1>
+        <p id="gameSubtitle">翻開卡片，找出一樣的回憶。全部配對成功後，會解鎖最後的生日祝福。</p>
+
+        <div class="form">
+          <div class="fixed-name" aria-label="生日主角名字">
+            <span>生日主角</span>
+            <strong>阿妮</strong>
+          </div>
+
+          <label>
+            難度
+            <select id="difficultySelect">
+              <option value="easy">簡單：4 組照片</option>
+              <option value="normal" selected>普通：6 組照片</option>
+              <option value="hard">困難：8 組照片</option>
+            </select>
+          </label>
+        </div>
+
+        <button id="startBtn" class="primary-btn">開始翻牌</button>
+
+        <p class="hint">
+          你可以替換 <code>assets</code> 資料夾裡的照片，再到 <code>config.js</code> 修改文字。
+        </p>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Memory Mission</p>
+          <h2 id="stageTitle">找回生日回憶</h2>
+        </div>
+        <div class="stats">
+          <div><span id="moves">0</span><small>步數</small></div>
+          <div><span id="matched">0</span><small>配對</small></div>
+          <div><span id="timer">00:00</span><small>時間</small></div>
+        </div>
+      </header>
+
+      <section id="boardStage" class="board-stage">
+        <div class="reveal-photo" aria-hidden="true">
+          <img id="revealImage" src="" alt="" />
+          <div class="reveal-cover"></div>
+          <div class="reveal-glow"></div>
+        </div>
+
+        <div class="board-shell">
+          <div class="reveal-status">
+            <span>謎底揭露進度</span>
+            <strong id="revealProgress">0%</strong>
+          </div>
+
+          <section id="board" class="board" aria-label="翻牌區"></section>
+        </div>
+      </section>
+
+      <button id="restartBtn" class="secondary-btn">重新開始</button>
+    </section>
+
+    <section id="winScreen" class="screen">
+      <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
+      <div class="hero-card win">
+        <div class="badge">Mission Complete</div>
+        <h1 id="winTitle">生日快樂！</h1>
+        <p id="winMessage">你已經找回所有回憶，今天的主角值得滿滿祝福。</p>
+
+        <div class="result-grid">
+          <div><span id="finalMoves">0</span><small>總步數</small></div>
+          <div><span id="finalTime">00:00</span><small>完成時間</small></div>
+        </div>
+
+        <div id="memoryList" class="memory-list"></div>
+
+        <button id="playAgainBtn" class="primary-btn">再玩一次</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="./config.js"></script>
+  <script src="./game.js"></script>
+</body>
+
+</html>
